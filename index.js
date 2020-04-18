@@ -21,7 +21,6 @@ function XDParser(opts) {
         let meta = {};
         metaLines.forEach(metaLine => {
             const lineParts = metaLine.split(": ");
-            console.log(lineParts);
             meta[lineParts[0]] = lineParts[1];
         });
         return meta;
@@ -41,7 +40,6 @@ function XDParser(opts) {
         const lines = rawClues.split("\n").filter(s => (s) && s !== "\n");
         const regex = /(^.\d*)\.\s(.*)\s\~\s(.*)/;
         for (let x = 0; x < lines.length; x++) {
-            console.log({ x: lines[x].match(regex) });
             const parts = lines[x].match(regex);
             if (parts.length !== 4) throw (`Could not parse question ${lines[x]}`);
             result[x] = {
@@ -52,7 +50,7 @@ function XDParser(opts) {
         }
         return result;
     }
-    
+
     opts = Object.assign({}, opts);
     if (opts.filename) {
         // TODO: load file
