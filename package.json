@@ -1,10 +1,12 @@
 {
   "name": "xd-crossword-parser",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "A library for converting .xd crossword data (as defined by Saul Pwanson - http://xd.saul.pw) to JSON",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:coverage": "npm test -- --coverage",
+    "test:badges": "npm run test:coverage  && jest-coverage-badges"
   },
   "repository": {
     "type": "git",
@@ -19,5 +21,16 @@
   "bugs": {
     "url": "https://github.com/j-norwood-young/xd-crossword-parser/issues"
   },
-  "homepage": "https://github.com/j-norwood-young/xd-crossword-parser#readme"
+  "homepage": "https://github.com/j-norwood-young/xd-crossword-parser#readme",
+  "devDependencies": {
+    "jest": "^27.5.1",
+    "jest-coverage-badges": "^1.1.2"
+  },
+  "jest": {
+    "coverageReporters": [
+      "json-summary", 
+      "text",
+      "lcov"
+    ]
+  }
 }

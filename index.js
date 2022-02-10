@@ -1,6 +1,6 @@
-// A library for converting .xd Crossword data to JSON (as defined by Saul Pwanson - http://xd.saul.pw)
+// A library for converting .xd Crossword data to JSON (as defined by Saul Pwanson - http://xd.saul.pw) written by Jason Norwood-Young
 
-function XDParser(opts) {
+function XDParser(data) {
     function processData(data) {
         // Split into parts
         const parts = data.split(/^$^$/gm).filter(s => s !== "\n");
@@ -42,21 +42,18 @@ function XDParser(opts) {
         for (let x = 0; x < lines.length; x++) {
             const parts = lines[x].match(regex);
             if (parts.length !== 4) throw (`Could not parse question ${lines[x]}`);
+            // Unescape string
+            const question = parts[2].replace(/\\/g, "");
             result[x] = {
                 num: parts[1],
-                question: parts[2],
+                question: question,
                 answer: parts[3]
             }
         }
         return result;
     }
 
-    opts = Object.assign({}, opts);
-    if (opts.filename) {
-        // TODO: load file
-    } else if (opts.data) {
-        return processData(opts.data);
-    }
+    return processData(data);
 }
 
 module.exports = XDParser;

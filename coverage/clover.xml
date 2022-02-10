@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1644488953275" clover="3.2.0">
+  <project timestamp="1644488953275" name="All files">
+    <metrics statements="33" coveredstatements="33" conditionals="10" coveredconditionals="8" methods="10" coveredmethods="10" elements="53" coveredelements="51" complexity="0" loc="33" ncloc="33" packages="1" files="1" classes="1"/>
+    <file name="index.js" path="/Users/jasonnorwood-young/Development/xd-crossword-parser/index.js">
+      <metrics statements="33" coveredstatements="33" conditionals="10" coveredconditionals="8" methods="10" coveredmethods="10"/>
+      <line num="6" count="28" type="stmt"/>
+      <line num="7" count="4" type="cond" truecount="1" falsecount="1"/>
+      <line num="8" count="4" type="stmt"/>
+      <line num="9" count="4" type="stmt"/>
+      <line num="10" count="4" type="stmt"/>
+      <line num="11" count="4" type="stmt"/>
+      <line num="12" count="4" type="stmt"/>
+      <line num="13" count="4" type="stmt"/>
+      <line num="14" count="4" type="stmt"/>
+      <line num="15" count="4" type="stmt"/>
+      <line num="16" count="4" type="stmt"/>
+      <line num="20" count="24" type="cond" truecount="2" falsecount="0"/>
+      <line num="21" count="4" type="stmt"/>
+      <line num="22" count="4" type="stmt"/>
+      <line num="23" count="16" type="stmt"/>
+      <line num="24" count="16" type="stmt"/>
+      <line num="26" count="4" type="stmt"/>
+      <line num="30" count="4" type="stmt"/>
+      <line num="31" count="68" type="cond" truecount="2" falsecount="0"/>
+      <line num="32" count="4" type="stmt"/>
+      <line num="33" count="60" type="stmt"/>
+      <line num="35" count="4" type="stmt"/>
+      <line num="39" count="8" type="stmt"/>
+      <line num="40" count="312" type="cond" truecount="2" falsecount="0"/>
+      <line num="41" count="8" type="stmt"/>
+      <line num="42" count="8" type="stmt"/>
+      <line num="43" count="296" type="stmt"/>
+      <line num="44" count="296" type="cond" truecount="1" falsecount="1"/>
+      <line num="46" count="296" type="stmt"/>
+      <line num="47" count="296" type="stmt"/>
+      <line num="53" count="8" type="stmt"/>
+      <line num="56" count="4" type="stmt"/>
+      <line num="59" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>
