@@ -5,7 +5,11 @@ function XDParser(data) {
         // Split into parts
         let parts = data.split(/^$^$/gm).filter(s => s !== "\n");
         if (parts.length > 4) {
-            parts = data.split(/\r\n\r\n/gm).filter(s => s !== "\n");
+            // console.log(JSON.stringify(data));
+            parts = data.split(/\r\n\r\n/g).filter(s => (s.trim()));
+            for(let i = 0; i < parts.length; i++) {
+                parts[i] = parts[i].replace(/\r\n/g, "\n");
+            }
         }
         if (parts.length !== 4) throw (`Too many parts - expected 4, found ${parts.length}`);
         const rawMeta = parts[0];
@@ -43,6 +47,7 @@ function XDParser(data) {
         const lines = rawClues.split("\n").filter(s => (s) && s !== "\n");
         const regex = /(^.\d*)\.\s(.*)\s~\s(.*)/;
         for (let x = 0; x < lines.length; x++) {
+            if (!lines[x].trim()) continue;
             const parts = lines[x].match(regex);
             if (parts.length !== 4) throw (`Could not parse question ${lines[x]}`);
             // Unescape string
