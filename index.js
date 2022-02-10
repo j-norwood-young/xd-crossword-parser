@@ -3,6 +3,7 @@
 function XDParser(data) {
     function processData(data) {
         // Split into parts
+        throw("Muahahaha");
         const parts = data.split(/^$^$/gm).filter(s => s !== "\n");
         if (parts.length !== 4) throw (`Too many parts - expected 4, found ${parts.length}`);
         const rawMeta = parts[0];
