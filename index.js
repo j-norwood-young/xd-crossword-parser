@@ -3,7 +3,6 @@
 function XDParser(data) {
     function processData(data) {
         // Split into parts
-        throw("Muahahaha");
         const parts = data.split(/^$^$/gm).filter(s => s !== "\n");
         if (parts.length !== 4) throw (`Too many parts - expected 4, found ${parts.length}`);
         const rawMeta = parts[0];
@@ -39,7 +38,7 @@ function XDParser(data) {
     function processClues(rawClues) {
         let result = [];
         const lines = rawClues.split("\n").filter(s => (s) && s !== "\n");
-        const regex = /(^.\d*)\.\s(.*)\s\~\s(.*)/;
+        const regex = /(^.\d*)\.\s(.*)\s~\s(.*)/;
         for (let x = 0; x < lines.length; x++) {
             const parts = lines[x].match(regex);
             if (parts.length !== 4) throw (`Could not parse question ${lines[x]}`);
@@ -49,7 +48,7 @@ function XDParser(data) {
                 num: parts[1],
                 question: question,
                 answer: parts[3]
-            }
+            };
         }
         return result;
     }
