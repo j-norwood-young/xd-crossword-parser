@@ -49,7 +49,7 @@ function XDParser(data) {
         for (let x = 0; x < lines.length; x++) {
             if (!lines[x].trim()) continue;
             const parts = lines[x].match(regex);
-            if (parts.length !== 4) throw (`Could not parse question ${lines[x]}`);
+            if (!parts || parts.length !== 4) throw (`Could not parse question ${lines[x]}`);
             // Unescape string
             const question = parts[2].replace(/\\/g, "");
             result[x] = {

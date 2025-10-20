@@ -161,3 +161,57 @@ test("test base64 encoded puzzle", () => {
     expect(parsed_2.meta.Date).toBe("1965-11-16");
     expect(parsed_2.grid[0]).toStrictEqual(["S", "H", "A", "W", "#", "S", "C", "A", "R", "F", "#", "R", "U", "S", "K"]);
 });
+
+test("handles CRLF line endings and normalization branch", () => {
+    const crlf = [
+        "Title: T\r\nAuthor: A\r\nEditor: E\r\nDate: 2000-01-01",
+        "AB#C\r\nDE#F",
+        "A1. One ~ ONE\r\nA2. Two ~ TWO",
+        "D1. Down ~ DOWN\r\nD2. Two ~ TWO"
+    ].join("\r\r\n\r\n");
+    const parsedCRLF = xd_parser(crlf);
+    expect(parsedCRLF.grid[0]).toStrictEqual(["A", "B", "#", "C"]);
+    expect(parsedCRLF.across[0]).toEqual({ num: "A1", question: "One", answer: "ONE" });
+});
+
+test("skips blank lines in clues (continue branch)", () => {
+    // Decode known-good puzzle, then inject a blank line between two across clues
+    const base = atob(puzzle_2);
+    const withBlank = base.replace(
+        /(A1\.[^\n]*\n)(A5\.)/,
+        (_, a1, a5) => `${a1}\n${a5}`
+    );
+    const parsedSkip = xd_parser(withBlank);
+    // Still parses both across clues, ignoring the injected blank line
+    expect(parsedSkip.across[0].num).toBe("A1");
+    expect(parsedSkip.across[1].num).toBe("A5");
+});
+
+test("throws on wrong number of parts", () => {
+    const bad = "Title: Only meta\n";
+    expect(() => xd_parser(bad)).toThrow(/Wrong number of parts/);
+});
+
+test("throws on bad clue format", () => {
+    const src = [
+        "Title: T\r\nAuthor: A\r\nEditor: E\r\nDate: 2000-01-01",
+        "AB#C\r\nDE#F",
+        "A1. Missing tilde and answer",
+        "D1. Down ~ DOWN"
+    ].join("\r\n\r\n");
+    expect(() => xd_parser(src)).toThrow();
+});
+
+test("ignores whitespace-only clue lines (continue branch)", () => {
+    const src = [
+        "Title: T\nAuthor: A\nEditor: E\nDate: 2000-01-01",
+        "AB#C\nDE#F",
+        "A1. One ~ ONE\n   \nA2. Two ~ TWO",
+        "D1. Down ~ DOWN\n   \nD2. Two ~ TWO"
+    ].join("\n\n");
+    const parsed = xd_parser(src);
+    const acrossNums = parsed.across.filter(Boolean).map(c => c.num);
+    const downNums = parsed.down.filter(Boolean).map(c => c.num);
+    expect(acrossNums).toEqual(["A1", "A2"]);
+    expect(downNums).toEqual(["D1", "D2"]);
+});
