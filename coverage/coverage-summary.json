@@ -1,2 +1,3 @@
-{"total": {"lines":{"total":0,"covered":0,"skipped":0,"pct":"Unknown"},"statements":{"total":0,"covered":0,"skipped":0,"pct":"Unknown"},"functions":{"total":0,"covered":0,"skipped":0,"pct":"Unknown"},"branches":{"total":0,"covered":0,"skipped":0,"pct":"Unknown"},"branchesTrue":{"total":0,"covered":0,"skipped":0,"pct":"Unknown"}}
+{"total": {"lines":{"total":38,"covered":38,"skipped":0,"pct":100},"statements":{"total":49,"covered":46,"skipped":0,"pct":93.87},"functions":{"total":11,"covered":11,"skipped":0,"pct":100},"branches":{"total":14,"covered":11,"skipped":0,"pct":78.57},"branchesTrue":{"total":0,"covered":0,"skipped":0,"pct":"Unknown"}}
+,"/Users/jason/Development/xd-crossword-parser/index.js": {"lines":{"total":38,"covered":38,"skipped":0,"pct":100},"functions":{"total":11,"covered":11,"skipped":0,"pct":100},"statements":{"total":49,"covered":46,"skipped":0,"pct":93.87},"branches":{"total":14,"covered":11,"skipped":0,"pct":78.57}}
 }

@@ -11,7 +11,7 @@ function XDParser(data) {
                 parts[i] = parts[i].replace(/\r\n/g, "\n");
             }
         }
-        if (parts.length !== 4) throw (`Too many parts - expected 4, found ${parts.length}`);
+        if (parts.length !== 4) throw (`Wrong number of parts - expected 4, found ${parts.length}`);
         const rawMeta = parts[0];
         const rawGrid = parts[1];
         const rawAcross = parts[2];
